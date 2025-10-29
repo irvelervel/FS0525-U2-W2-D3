@@ -1,0 +1,7 @@
+button {
+  @include buttons-styles;
+}
+
+.animated {
+  animation: box-moving 2s linear 0s;
+}

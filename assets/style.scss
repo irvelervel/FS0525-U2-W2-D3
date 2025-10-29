@@ -233,3 +233,43 @@ $colors-map: (
     background-color: $color-value;
   }
 }
+
+// 9) IF/ELSE
+// in SASS è possibile utilizzare delle direttive condizionali al fine
+// di prendere delle decisioni sulla base di determinate condizioni
+// es. prendo un valore invece di un altro, creo una classe oppure no,
+// applico quel mixin o no etc.
+
+@mixin custom-margin($quantity) {
+  // il margine che questo mixin vuole applicare può essere di 15px oppure 0,
+  // a seconda di una condizione
+  @if $quantity == 0 {
+    margin: 15px;
+  } @else {
+    margin: 0px;
+  }
+}
+
+.margin {
+  @include custom-margin(0);
+}
+
+.no-margin {
+  @include custom-margin(10);
+}
+
+.test {
+  // il valore di $my-color sarebbe green
+  @if $my-color == blue {
+    @include centered;
+    // classe vuota, SASS fa a meno di trasportarla nel compilato
+  }
+}
+
+// 10) PARTIALS
+// SASS ci permeette di separare il nostro codice in singoli, piccoli files
+// che possono occuparsi di un singolo aspetto dei nostri stili alla volta
+// questo serve per costruire una codebase modulare, mantenibile e facilmente
+// utilizzabile
+
+// ci spostiamo su app.scss

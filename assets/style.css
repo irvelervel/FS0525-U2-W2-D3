@@ -137,4 +137,12 @@ h3.title {
 
 .bg-danger {
   background-color: red;
+}
+
+.margin {
+  margin: 15px;
+}
+
+.no-margin {
+  margin: 0px;
 }/*# sourceMappingURL=style.css.map */

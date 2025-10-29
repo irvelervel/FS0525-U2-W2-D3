@@ -1,0 +1,29 @@
+// In questo file io NON ANDRÒ a definire nessuno stile.
+// Qui dentro io andrò semplicemente a importare dei PARTIALS: un partial
+// è un file scss separato che si occupa di un singolo compito.
+// possono servire anche per separare porzioni di stili, ma ecco una lista di
+// quelli più comuni:
+
+// - reset
+// - variabili
+// - mixins
+// - animations
+// - header
+// - main
+// - footer
+
+// Un file partial è un documento .scss che comincia con l'underscore _
+// tipicamente inserirete tutti i partials in un'unica cartella
+
+// i file partial NON VENGONO AUTOMATICAMENTE compilati in CSS (grazie al loro
+// nome che comincia con _ e vengono "ignorati" dall'estensione Live Sass Compiler).
+// nascono con il fine ultimo di venire IMPORTATI in un file .scss che poi risulterà
+// venire compilato per fornire gli stili al documento.
+
+// come si importano i file partials?
+@import './assets/partials/reset'; // nell'import NON CI VA _ e NON CI VA .scss
+// NB: l'ORDINE degli @import è @importantissimo!
+@import './assets/partials/variables';
+@import './assets/partials/mixins';
+@import './assets/partials/animations';
+@import './assets/partials/main';
