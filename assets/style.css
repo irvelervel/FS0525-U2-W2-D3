@@ -47,4 +47,94 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px dotted red;
+  border-radius: 15px;
+}
+
+h1.title {
+  text-align: center;
+  color: black;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: Arial;
+}
+
+h2.title {
+  text-align: center;
+  color: black;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: Arial;
+}
+
+h3.title {
+  text-align: center;
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: Arial;
+}
+
+.text-12px {
+  font-size: 12px;
+}
+
+.text-16px {
+  font-size: 16px;
+}
+
+.text-20px {
+  font-size: 20px;
+}
+
+.text-24px {
+  font-size: 24px;
+}
+
+.text-small {
+  font-size: 12px;
+}
+
+.text-medium {
+  font-size: 16px;
+}
+
+.text-large {
+  font-size: 20px;
+}
+
+.text-extralarge {
+  font-size: 24px;
+}
+
+.text-primary {
+  color: blue;
+}
+
+.bg-primary {
+  background-color: blue;
+}
+
+.text-secondary {
+  color: gray;
+}
+
+.bg-secondary {
+  background-color: gray;
+}
+
+.text-success {
+  color: green;
+}
+
+.bg-success {
+  background-color: green;
+}
+
+.text-danger {
+  color: red;
+}
+
+.bg-danger {
+  background-color: red;
 }/*# sourceMappingURL=style.css.map */

@@ -129,13 +129,107 @@ $button-padding: 0 15px;
 // 6) MIXIN
 // un "mixin" è un BLOCCO di regole/proprietà CSS richiamabili con un singolo nome
 
+$default-radius: 15px;
+
 @mixin centered {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+@mixin special-border {
+  border: 1px dotted red;
+  border-radius: $default-radius;
+}
+
 #btn-container {
   height: 200px;
   @include centered; // porto dentro in un colpo solo 3 regole di centramento
+  @include special-border;
+}
+
+// un mixin può addirittura accettare PARAMETRI
+@mixin main-title($text-size: 1em) {
+  text-align: center;
+  color: black;
+  font: {
+    size: $text-size;
+    weight: bold;
+    family: Arial;
+  }
+}
+
+h1.title {
+  @include main-title(1.5em);
+}
+
+h2.title {
+  @include main-title(1.2em);
+}
+
+h3.title {
+  @include main-title; // va di default a 1em come specificato nel valore predefinito
+  // del parametro del mixin main-title()
+}
+
+// 7) INTERPOLAZIONE DI STRINGHE + VALORI
+
+// in JS...
+// const a = 'size'
+// const b = `font-${a}` -> "font-size"
+
+$a: 'size';
+@mixin test {
+  font-#{$a}: 16px; // font-size: 16px;
+}
+
+// 8) C I C L I (loops)
+// in SASS è possibile utilizzare i CICLI per AUTOMATIZZARE la creazione di STILI "in serie"
+
+$sizes: 12px, 16px, 20px, 24px;
+// il mio scopo è creare delle CLASSI css in modo AUTOMATICO per assegnare
+// la proprietà font-size di un elemento, utilizzando i valori della lista $sizes
+
+@each $single-size in $sizes {
+  // al primo giro del ciclo, $single-size è 12px
+  // al secondo giro del ciclo, $single-size è 16px
+  // al terzo giro del ciclo, $single-size è 20px
+  // al quarto giro del ciclo, $single-size è 24px
+  .text-#{$single-size} {
+    font-size: $single-size;
+  }
+}
+
+// però in SASS esistono anche le MAPPE: delle collezioni NON di solo valori,
+// ma di COPPIE chiave:valore (come gli oggetti in JS)
+$sizes-map: (
+  small: 12px,
+  medium: 16px,
+  large: 20px,
+  extralarge: 24px,
+);
+
+@each $name, $value in $sizes-map {
+  // qui $name ad ogni giro sarà small, medium, large, extralarge
+  // qui $value ad ogni giro sarà 12px, 16px, 20px, 24px
+  .text-#{$name} {
+    font-size: $value;
+  }
+}
+
+$colors-map: (
+  primary: blue,
+  secondary: gray,
+  success: green,
+  danger: red,
+);
+
+@each $color-name, $color-value in $colors-map {
+  .text-#{$color-name} {
+    color: $color-value;
+  }
+
+  .bg-#{$color-name} {
+    background-color: $color-value;
+  }
 }
