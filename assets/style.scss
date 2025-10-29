@@ -10,3 +10,132 @@ body {
   background-color: purple;
   margin: 0;
 }
+
+// 2) SELETTORI ANNIDATI / NIDIFICATI ("nested")
+
+// nav {
+//   display: block;
+//   width: 100%;
+// }
+
+// nav ul {
+//   display: flex;
+//   flex-direction: column;
+//   margin: 0;
+//   padding: 0;
+//   list-style-type: none;
+//   text-align: center;
+// }
+
+// nav ul li {
+//   font-family: Arial, Helvetica, sans-serif;
+// }
+
+// nav ul li a {
+//   text-decoration: none;
+//   color: black;
+// }
+// -------------
+nav {
+  display: block;
+  width: 100%;
+  ul {
+    // qui siamo in nav ul { }
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    li {
+      // qui siamo in nav ul li { }
+      font-family: Arial, Helvetica, sans-serif;
+      a {
+        // qui siamo in nav ul li a { }
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
+
+// 3) PSEUDOCLASSI IN SASS
+// button.primary {
+//   background-color: rgb(68, 68, 255);
+// }
+
+// button.primary:hover {
+//   background-color: rgb(98, 227, 252);
+// }
+
+button.primary {
+  background-color: rgb(68, 68, 255);
+  &:hover {
+    background-color: rgb(98, 227, 252);
+  }
+}
+
+// miglioramenti alla Q O L -> Quality Of Life
+
+// 4) PREFISSI COMUNI PER PROPRIETÀ SIMILI
+// p {
+//   font-size: 1.2em;
+//   font-style: italic;
+//   font-family: Arial;
+//   font-weight: bold;
+// }
+
+// D R Y -> Don't Repeat Yourself
+
+p {
+  font: {
+    size: 1.2em;
+    style: italic;
+    family: Arial;
+    weight: bold;
+  }
+}
+
+// fine delle abbreviazioni sintattiche
+
+// 5) VARIABILI
+// Le variabili in SASS hanno lo scopo di memorizzare un valore.
+// In realtà, più che variabili le utilizzeremo come COSTANTI: difficilmente
+// una variabile che inizialmente ospita un determinato valore verrà riutilizzata
+// per ospitarne un altro.
+// -> quindi concettualmente sono più simili alle costanti
+
+// quali TIPI di valori si possono memorizzare in una variabile SASS?
+// - valori numerici (1, 50, 10px, 2em, etc.)
+// - stringhe ('hello', '2px solid black', "0 auto", etc.)
+// - colori (red, #f3f3f3, #DE9129)
+// - booleani (true, false)
+// - null
+// - LISTE (10px, 16px, 20px) -> un po' come gli ARRAY in JS
+// - MAPPE di coppie chiave:valore -> un po' come gli OGGETTI in JS
+
+// come si dichiara una variabile in SASS?
+$my-color: green;
+$main-margin: 25px;
+$main-border: 2px solid black;
+$button-padding: 0 15px;
+
+// come si USA una variabile in SASS?
+.secondary {
+  background-color: $my-color; // green
+  padding: $button-padding; // 0 15px;
+}
+
+// 6) MIXIN
+// un "mixin" è un BLOCCO di regole/proprietà CSS richiamabili con un singolo nome
+
+@mixin centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#btn-container {
+  height: 200px;
+  @include centered; // porto dentro in un colpo solo 3 regole di centramento
+}
